@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блич: Кровь Тысячелетней Войны</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0a0a1a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Секции */
+        .screen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        /* Экран 1: Герой */
+        .hero {
+           background: linear-gradient(rgba(0, 0, 30, 0.8), rgba(0, 0, 30, 0.9)), 
+            url('https://avatars.mds.yandex.net/get-kinopoisk-image/6201401/64ee0219-5972-4f8f-a06f-3cd024a368e8/300x');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .hero-logo {
+            font-size: 8rem;
+            color: #fff;
+            text-shadow: 0 0 20px #00a2ff, 0 0 40px #0066cc;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .hero-subtitle {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #4db8ff;
+            text-shadow: 0 0 10px rgba(0, 162, 255, 0.5);
+        }
+
+        .hero-text {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #0066cc, #00a2ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 102, 204, 0.6);
+            background: linear-gradient(45deg, #00a2ff, #0066cc);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #00a2ff;
+            color: #00a2ff;
+        }
+
+        .btn-outline:hover {
+            background: rgba(0, 162, 255, 0.1);
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: #4db8ff;
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateX(-50%) translateY(0);}
+            40% {transform: translateX(-50%) translateY(-10px);}
+            60% {transform: translateX(-50%) translateY(-5px);}
+        }
+
+        /* Экран 2: Об арке */
+        .about {
+            background-color: #0f0f2a;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #fff;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #0066cc, #00a2ff);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-features {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid #00a2ff;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 0 8px 8px 0;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .feature-card h3 {
+            color: #4db8ff;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .feature-card p {
+            color: #ccc;
+        }
+
+        /* Экран 3: Персонажи */
+        .characters {
+            background-color: #0a0a1a;
+        }
+
+        .characters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            width: 100%;
+        }
+
+        .character-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            border: 1px solid rgba(0, 162, 255, 0.2);
+        }
+
+        .character-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.3);
+            border-color: #00a2ff;
+        }
+
+        .character-img {
+            height: 300px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .character-info {
+            padding: 25px;
+        }
+
+        .character-info h3 {
+            color: #fff;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .character-info p {
+            color: #aaa;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .character-btn {
+            background: rgba(0, 162, 255, 0.1);
+            color: #4db8ff;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .character-btn:hover {
+            background: rgba(0, 162, 255, 0.3);
+            color: #fff;
+        }
+
+        /* Экран 4: Галерея */
+        .gallery {
+            background-color: #0f0f2a;
+        }
+
+        .gallery-slider {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide {
+            width: 100%;
+            height: 500px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #aaa;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        /* Экран 5: CTA */
+        .cta {
+            background: linear-gradient(rgba(10, 10, 26, 0.9), rgba(10, 10, 26, 0.9)), 
+            url('https://avatars.mds.yandex.net/i?id=22a793067fa329939ce10db8d1ab9b83_l-2466101-images-thumbs&n=13');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .cta-title {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(0, 162, 255, 0.7);
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+
+        .cta-big-btn {
+            padding: 20px 60px;
+            font-size: 1.3rem;
+            background: linear-gradient(45deg, #cc0000, #ff3333);
+            box-shadow: 0 10px 25px rgba(204, 0, 0, 0.5);
+            margin-bottom: 50px;
+        }
+
+        .cta-big-btn:hover {
+            background: linear-gradient(45deg, #ff3333, #cc0000);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 50px;
+        }
+
+        .info-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 4px solid #00a2ff;
+        }
+
+        .info-item h4 {
+            color: #4db8ff;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .info-item p {
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background-color: #050510;
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid rgba(0, 162, 255, 0.2);
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 0 0 10px #00a2ff;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: #4db8ff;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: #00a2ff;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            color: #777;
+            font-size: 0.9rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Модальное окно для трейлера */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 900px;
+            width: 90%;
+            background-color: #0a0a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #00a2ff;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero-logo {
+                font-size: 4rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.5rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .characters-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            
+            .cta-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Экран 1: Герой -->
+    <section id="home" class="screen hero">
+        <div class="container">
+            <h1 class="hero-logo">BLEACH</h1>
+            <h2 class="hero-subtitle">Тысячелетняя Кровопролитная Война. Эпилог начинается.</h2>
+            <p class="hero-text">Легендарное аниме возвращается с самым масштабным и долгожданным арком в истории. Ичиго Куросаки и его союзники сталкиваются с величайшей угрозой — Квинси из Ванденрайха.</p>
+            <div>
+                <a href="#" class="btn" id="watchTrailerBtn">СМОТРЕТЬ ТРЕЙЛЕР</a>
+                <a href="#about" class="btn btn-outline">Узнать больше ↓</a>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Экран 2: Об арке -->
+    <section id="about" class="screen about">
+        <div class="container">
+            <h2 class="section-title">Война, которая изменит всё</h2>
+            <div class="about-content">
+                <div class="about-image">
+                   <img src="https://m.media-amazon.com/images/M/MV5BNTlkZTYyZWMtYjkxOS00ZTY0LWIwMjAtZDVlZWU5OTgwNDA3XkEyXkFqcGc@._V1_.jpg" alt="Блич: Тысячелетняя Кровопролитная Война">
+                </div>
+                <div class="about-features">
+                    <div class="feature-card">
+                        <h3>Новые угрозы</h3>
+                        <p>Появляются Квинси из Ванденрайха во главе с Юхабахом. Их цель — уничтожить Общество Душ и переписать мир по своим законам.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Новые силы</h3>
+                        <p>Шинигами раскрывают свои истинные Банкаи, а Ичиго обретает форму, которая может противостоять самому Королю Квинси.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Раскрытие тайн</h3>
+                        <p>Прошлое Общества Душ, истоки сил Квинси и судьба всего мира под вопросом. Каждый эпизод — новая разгадка вековых загадок.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Готовы к битве?</h3>
+                        <p>Самый эпичный арк в истории аниме ждет вас. Сражения, драма и неожиданные повороты — всё это "Кровь Тысячелетней Войны".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Экран 3: Персонажи -->
+    <section id="characters" class="screen characters">
+        <div class="container">
+            <h2 class="section-title">Новая эра силы</h2>
+            <div class="characters-grid">
+                <div class="character-card">
+                    <img src="https://www.dexerto.com/cdn-image/wp-content/uploads/2024/12/30/bleach-tybw-cover.jpg" alt="Ичиго Куросаки" class="character-img">
+                    <div class="character-info">
+                        <h3>Ичиго Куросаки</h3>
+                        <p>Защитник душ обретает свою истинную силу, чтобы противостоять величайшей угрозе.</p>
+                        <a href="#" class="character-btn" data-character="ichigo">Узнать о силе</a>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <img src="https://i.pinimg.com/736x/4b/19/a7/4b19a7730bb5b8e20d430171509a2d3b.jpg" alt="Юхабах" class="character-img">
+                    <div class="character-info">
+                        <h3>Юхабах</h3>
+                        <p>Владыка Ванденрайха, Король Квинси, чья цель — уничтожение всего мира Шинигами.</p>
+                        <a href="#" class="character-btn" data-character="yhwach">Узнать об угрозе</a>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <img src="https://i.pinimg.com/originals/56/ca/d2/56cad2d7bff899c4b356aa448e2f5eb0.jpg" alt="Ренджи Абараи" class="character-img">
+                    <div class="character-info">
+                        <h3>Ренджи Абараи</h3>
+                        <p>Верный друг и лейтенант 6-го отряда, раскрывший истинную мощь своего Банкаи.</p>
+                        <a href="#" class="character-btn" data-character="renji">Узнать об эволюции</a>
+                    </div>
+                </div>
+                <div class="character-card">
+                    <img src="https://i.pinimg.com/736x/de/e7/8b/dee78b131a623e6c5879f0ade5f16a31.jpg" alt="Рукия Кучики" class="character-img">
+                    <div class="character-info">
+                        <h3>Рукия Кучики</h3>
+                        <p>Новый капитан 13-го отряда, прошедшая долгий путь от начинающей шинигами до лидера.</p>
+                        <a href="#" class="character-btn" data-character="rukia">Узнать о пути</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Экран 4: Галерея -->
+    <section id="gallery" class="screen gallery">
+        <div class="container">
+            <h2 class="section-title">Погрузитесь в мир «Блича»</h2>
+            <div class="gallery-slider">
+                <div class="slide" id="slide1" style="background-image: url('https://avatars.mds.yandex.net/i?id=ed7caf234b848be5062b459eb26d81d3_l-5222449-images-thumbs&n=13');"></div>
+            </div>
+            <div class="logos">
+                <div class="logo-item">Studio Pierrot</div>
+                <div class="logo-item">TV Tokyo</div>
+                <div class="logo-item">Shueisha</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Экран 5: CTA -->
+    <section id="cta" class="screen cta">
+        <div class="container">
+            <h2 class="cta-title">Время сражаться уже настало</h2>
+            <p class="cta-text">Первые серии уже в эфире! Не пропустите возвращение легенды. Присоединяйтесь к миллионам фанатов по всему миру.</p>
+            
+            <a href="https://www.crunchyroll.com" target="_blank" class="btn cta-big-btn">СМОТРЕТЬ НА CRUNCHYROLL</a>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>Дата выхода</h4>
+                    <p>Октябрь 2022</p>
+                </div>
+                <div class="info-item">
+                    <h4>Формат</h4>
+                    <p>52 серии (4 части)</p>
+                </div>
+                <div class="info-item">
+                    <h4>Статус</h4>
+                    <p>Часть 2 уже в работе!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">BLEACH</div>
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            </div>
+            <div class="copyright">
+                © Tite Kubo/Shueisha, TV TOKYO, Pierrot. Это фан-сайт, созданный в образовательных целях. Все права на аниме "Блич" принадлежат их законным владельцам.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно для трейлера -->
+    <div id="trailerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="video-container">
+                <iframe id="trailerVideo" src="https://www.youtube.com/embed/Byk6f8hMl_s">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Плавная прокрутка для якорных ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if(this.getAttribute('href') === '#') return;
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Модальное окно для трейлера
+        const modal = document.getElementById('trailerModal');
+        const watchBtn = document.getElementById('watchTrailerBtn');
+        const closeBtn = document.querySelector('.close-modal');
+
+        watchBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Закрытие модального окна при клике вне его
+        window.addEventListener('click', function(e) {
+            if(e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Карточки персонажей
+        document.querySelectorAll('.character-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const character = this.getAttribute('data-character');
+                const characterNames = {
+                    'ichigo': 'Ичиго Куросаки',
+                    'yhwach': 'Юхабах',
+                    'renji': 'Ренджи Абараи',
+                    'rukia': 'Рукия Кучики'
+                };
+                alert(`Вы выбрали: ${characterNames[character]}\n\nИнформация о персонаже загружается...`);
+            });
+        });
+
+        // Простой слайдер для галереи (для демонстрации)
+        const slides = [
+            'https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=1868&q=80',
+            'https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80',
+            'https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80'
+        ];
+        
+        let currentSlide = 0;
+        const slideElement = document.getElementById('slide1');
+        
+        function changeSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            slideElement.style.backgroundImage = `url('${slides[currentSlide]}')`;
+        }
+        
+        // Меняем слайд каждые 5 секунд
+        setInterval(changeSlide, 5000);
+        
+        // Параллакс-эффект для некоторых секций
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero, .cta');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.5;
+                element.style.backgroundPositionY = `${scrolled * speed}px`;
+            });
+        });
+    </script>
+</body>
+</html>
